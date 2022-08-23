@@ -1,26 +1,26 @@
 import React from "react";
-
-class SearchBar extends React.Component {
+export default class SearchBar extends React.Component {
   state = { term: "" };
+
   onInputChange = (event) => {
     this.setState({ term: event.target.value });
   };
 
   onFormSubmit = (event) => {
     event.preventDefault();
-    this.props.onSubmit(this.state.term);
+    this.props.onFormSubmitted(this.state.term);
   };
 
   render() {
     return (
-      <div className="ui segment">
-        <form onSubmit={this.onFormSubmit} className="ui form">
-          <label>Image Search</label>
+      <div className="search-bar ui segment">
+        <form className="ui form" onSubmit={this.onFormSubmit}>
+          <label>Video Search</label>
           <input
             className="field"
             type="text"
+            placeholder="Video"
             value={this.state.term}
-            placeholder="Images.."
             onChange={this.onInputChange}
           ></input>
         </form>
@@ -28,4 +28,3 @@ class SearchBar extends React.Component {
     );
   }
 }
-export default SearchBar;
